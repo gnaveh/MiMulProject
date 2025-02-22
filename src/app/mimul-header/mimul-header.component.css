@@ -1,0 +1,19 @@
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333333;
+  padding: 10px 20px;
+  height: 7vh;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2); /* Light white border */
+  box-shadow: 0px 4px 6px rgba(255, 255, 255, 0.1); /* Soft white shadow */
+  margin-bottom: 3vh;
+}
+
+.logo {
+  font-size: 5vh;
+  font-weight: bold;
+  margin-right: auto;
+  color: white;
+  font-family: cursive;
+}

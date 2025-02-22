@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  overflow: auto;
+  max-height: 85vh;
+  margin-bottom: 1vh;
+}
+
+.container > * {
+  width: 76vh;
+  margin: 2vh;
+}
