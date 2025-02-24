@@ -13,7 +13,6 @@ export class MimulImageComponent {
   @Input() isInMyList: boolean = true;
   @Input() image: ImgurImage = {};
 
-  privateAlbumId: string = "msfdyJt";
   publicAlbumId: string = "uGviM5l";
 
   isImageDeleted: boolean = false;
@@ -29,7 +28,7 @@ export class MimulImageComponent {
   }
 
   deleteImage() {
-    this.imgurService.deleteImage(this.privateAlbumId, this.image.deletehash).subscribe({
+    this.imgurService.deleteImage(this.image.deletehash).subscribe({
       next: (response) => {
         if (response.success) {
           this.isImageDeleted = true;
