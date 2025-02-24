@@ -1,4 +1,4 @@
 <div class="app">
-  <app-mimul-header></app-mimul-header>
-  <app-mimul-content></app-mimul-content>
+  <app-mimul-header (isInMyListEmitter)="isInMyListChanged($event)" (newImageEmitter)="newImageChanged($event)"></app-mimul-header>
+  <app-mimul-content [isInMyList]="isInMyList" [newImage]="newImage"></app-mimul-content>
 </div>

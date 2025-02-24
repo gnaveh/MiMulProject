@@ -19,10 +19,11 @@
   width: 60vh;
   height: 35vh;
   margin-bottom: 2vh;
+  cursor: pointer;
 }
 
 .icons {
-  width: 20vh;
+  width: 15vh;
   display: flex;
   justify-content: space-between;
 }
@@ -34,5 +35,5 @@
 }
 
 .pass-arrow {
-  transform: rotate(90deg);
+    transform: rotate(180deg);
 }

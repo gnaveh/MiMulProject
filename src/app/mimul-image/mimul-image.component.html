@@ -1,9 +1,8 @@
-<div class="container">
+<div *ngIf="!isImageDeleted" class="container">
   <div class="image-name">{{image.title}}</div>
-  <img class="image" src="{{image.link}}" alt="{{image.title}}" />
-  <div class="icons">
-    <mat-icon class="icon" matTooltip="העבר תמונה" matTooltipPosition="above">arrow_forward</mat-icon>
-    <mat-icon class="icon" matTooltip="מחק תמונה" matTooltipPosition="above">delete</mat-icon>
-    <mat-icon class="icon pass-arrow" matTooltip="הורד תמונה" matTooltipPosition="above">arrow_forward</mat-icon>
+  <img class="image" (click)="openImage()" src="{{image.link}}" alt="{{image.title}}"/>
+  <div *ngIf="isInMyList" class="icons">
+    <mat-icon class="icon pass-arrow" (click)="moveImageToPublicAlbum()" matTooltip="ותר על הזמנה" matTooltipPosition="above">arrow_forward</mat-icon>
+    <mat-icon class="icon" (click)="deleteImage()" matTooltip="מחק תמונה" matTooltipPosition="above">delete</mat-icon>
   </div>
 </div>

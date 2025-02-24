@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ImgurImage } from './services/imgur.service';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +8,14 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'MiMul';
+  isInMyList: boolean = true;
+  newImage: ImgurImage = {};
+
+  isInMyListChanged(value: boolean) {
+    this.isInMyList = value;
+  }
+
+  newImageChanged(value: ImgurImage) {
+    this.newImage = value;
+  }
 }

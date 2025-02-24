@@ -9,6 +9,11 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { HttpClientModule } from '@angular/common/http';
+import { AddImageComponent } from './add-image/add-image.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { FormsModule } from '@angular/forms';
+import { ImageDialogComponent } from './image-dialog/image-dialog.component';
+
 
 @NgModule({
   declarations: [
@@ -16,13 +21,17 @@ import { HttpClientModule } from '@angular/common/http';
     MimulContentComponent,
     MimulHeaderComponent,
     MimulImageComponent,
+    AddImageComponent,
+    ImageDialogComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MatIconModule,
     MatTooltipModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule,
+    FormsModule
   ],
   providers: [
     provideAnimationsAsync()

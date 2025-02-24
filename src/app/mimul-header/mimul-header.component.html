@@ -1,3 +1,9 @@
 <div class="header-container">
   <div class="logo">MiMul</div>
+  <div class="right-side">
+    <button *ngIf="isInMyList" class="add-button" (click)="addNewImage()">+</button>
+    <button class="list-button" (click)="changeIsInMyListValue()">
+      {{ isInMyList ? 'הזמנות פנויות' : 'ההזמנות שלי' }}
+    </button>
+  </div>
 </div>
