@@ -32,11 +32,7 @@ export class ImgurService {
     return this.http.post(`${this.apiUrl}/image`, formData, { headers: this.headers });
   }
 
-  deleteImage(albumId: string, imageDeleteHash?: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/album/${albumId}/image/${imageDeleteHash}`, { headers: this.headers });
-  }
-
-  transferImageToAlbum(originAlbumId: string, destinationAlbumId: string, image: ImgurImage) {
-
+  deleteImage(imageDeleteHash?: string): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/image/${imageDeleteHash}`, { headers: this.headers });
   }
 }

@@ -45,7 +45,7 @@ export class MimulImageComponent {
     this.imgurService.addImageToAlbum(this.publicAlbumId, this.image.link || '', this.image.title || '').subscribe({
       next: (response) => {
         if (response.success) {
-          this.imgurService.deleteImage(this.privateAlbumId, this.image.deletehash).subscribe(_ => {
+          this.imgurService.deleteImage(this.image.deletehash).subscribe(_ => {
             this.isImageDeleted = true;
           })
         }

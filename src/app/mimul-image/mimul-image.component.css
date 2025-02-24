@@ -10,6 +10,7 @@
 }
 
 .image-name {
+  min-height: 3vh;
   font-size: 3vh;
   color: white;
   margin-bottom: 1.5vh;
