@@ -32,16 +32,21 @@ export class MimulImageComponent {
   }
 
   deleteImage() {
-    this.imgurService.deleteImage(this.image.deletehash).subscribe({
+    this.deleteImageEmitter.emit(this.image.id);
+    console.log("deleted image");
+
+
+    /*this.imgurService.deleteImage(this.image.deletehash).subscribe({
       next: (response) => {
         if (response.success) {
           this.deleteImageEmitter.emit(this.image.id);
+          console.log("deleted image");
         }
       },
       error: (err) => {
         console.log('Error:', err);
       }
-    })
+    })*/
   }
 
   moveImageToPublicAlbum() {
@@ -49,7 +54,14 @@ export class MimulImageComponent {
       next: (response) => {
         if (response.success) {
           this.deleteImageEmitter.emit(this.image.id);
-          this.imgurService.deleteImage(this.image.deletehash);
+          this.imgurService.deleteImage(this.image.deletehash).subscribe({
+            next: (_) => {
+              console.log("deleted and passed image");
+            },
+            error: (err) => {
+              console.log('Error:', err);
+            }
+          });
         }
       },
       error: (err) => {

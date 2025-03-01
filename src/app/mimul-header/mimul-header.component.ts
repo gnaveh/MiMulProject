@@ -33,7 +33,7 @@ export class MimulHeaderComponent {
 
     const imageName = selectedImage.name.replace(/\.[^/.]+$/, "");  
 
-    console.log(imageName);
+    console.log("new image added", imageName);
 
     this.imgurService.addImageToAlbum(this.privateAlbumId, selectedImage, imageName).subscribe({
       next: (response) => {

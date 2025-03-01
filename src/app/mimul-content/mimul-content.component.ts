@@ -12,7 +12,7 @@ export class MimulContentComponent implements OnChanges {
   @Input() newImage: ImgurImage = {};
 
   images: ImgurImage[] = [];
-  isLoading: boolean = true;
+  isLoading: boolean = false;
 
   privateAlbumId: string = "msfdyJt";
   publicAlbumId: string = "uGviM5l";
@@ -35,7 +35,39 @@ export class MimulContentComponent implements OnChanges {
   fetchImages(albumId: string) {
     const fetchedImages: ImgurImage[] = [];
 
-    this.isLoading = true;
+    this.images = [
+      {
+        id: "JMM3zZL",
+        deletehash: "n0tkLZJNKIktHJG",
+        link: "https://i.imgur.com/JMM3zZL.jpeg",
+        title: '',
+      },
+      {
+        id: "w3kyhKj",
+        deletehash: "rj4rm9RQj5ynwVc",
+        link: "https://i.imgur.com/w3kyhKj.jpeg",
+        title: "אני לא מאמין",
+      },
+      {
+        id: "1rZTOXX",
+        deletehash: "tzpY1wEF3aYYrUC",
+        link: "https://i.imgur.com/1rZTOXX.jpeg",
+        title: "גדוד תובלה",
+      },
+      {
+        id: "1g8dQOK",
+        deletehash: "SxLdf44WOhOhD29",
+        link: "https://i.imgur.com/1g8dQOK.jpeg",
+        title: "גדוד תובלה",
+      },
+      {
+        id: "3GMnJFl",
+        deletehash: "Glwjj0LcBEMitys",
+        link: "https://i.imgur.com/3GMnJFl.jpeg",
+        title: "גדוד תובלה",
+      },
+    ];
+    /*this.isLoading = true;
     this.imgurService.getImagesFromAlbum(albumId).subscribe({
       next: (response) => {
         if (response.success) {
@@ -59,10 +91,10 @@ export class MimulContentComponent implements OnChanges {
         console.log('Error fetching images:', err);
         this.isLoading = false;
       }
-    });
+    });*/
   }
 
   removeImage(imageId: string) {
-    this.images.filter(image => image.id !== imageId);
+    this.images = this.images.filter(image => image.id !== imageId);
   }
 }
