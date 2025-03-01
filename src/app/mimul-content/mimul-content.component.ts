@@ -33,20 +33,21 @@ export class MimulContentComponent implements OnChanges {
   }
 
   fetchImages(albumId: string) {
-    this.images = [];
+    const fetchedImages: ImgurImage[] = [];
 
     this.isLoading = true;
     this.imgurService.getImagesFromAlbum(albumId).subscribe({
       next: (response) => {
         if (response.success) {
           response.data.forEach((imageFromImgur: any) => {
-            this.images.push({
+            fetchedImages.push({
               id: imageFromImgur.id as string,
               deletehash: imageFromImgur.deletehash as string,
               link: imageFromImgur.link as string,
               title: imageFromImgur.title as string
             });
           })
+          this.images = fetchedImages;
           console.log('Success fetching images:', this.images);
         }
         else {
@@ -59,5 +60,9 @@ export class MimulContentComponent implements OnChanges {
         this.isLoading = false;
       }
     });
+  }
+
+  removeImage(imageId: string) {
+    this.images.filter(image => image.id !== imageId);
   }
 }

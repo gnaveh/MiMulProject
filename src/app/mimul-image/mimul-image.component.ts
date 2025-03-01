@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ImgurImage, ImgurService } from '../services/imgur.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ImageDialogComponent } from '../image-dialog/image-dialog.component';
@@ -13,8 +13,10 @@ export class MimulImageComponent {
   @Input() isInMyList: boolean = true;
   @Input() image: ImgurImage = {};
 
-  publicAlbumId: string = "uGviM5l";
+  @Output() deleteImageEmitter = new EventEmitter<string>();
 
+
+  publicAlbumId: string = "uGviM5l";
   isImageDeleted: boolean = false;
   constructor(private imgurService: ImgurService, private dialog: MatDialog) { }
 
@@ -33,7 +35,7 @@ export class MimulImageComponent {
     this.imgurService.deleteImage(this.image.deletehash).subscribe({
       next: (response) => {
         if (response.success) {
-          this.isImageDeleted = true;
+          this.deleteImageEmitter.emit(this.image.id);
         }
       },
       error: (err) => {
@@ -46,7 +48,7 @@ export class MimulImageComponent {
     this.imgurService.addImageToAlbum(this.publicAlbumId, this.image.link || '', this.image.title || '').subscribe({
       next: (response) => {
         if (response.success) {
-          this.isImageDeleted = true;
+          this.deleteImageEmitter.emit(this.image.id);
           this.imgurService.deleteImage(this.image.deletehash);
         }
       },

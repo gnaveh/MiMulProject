@@ -1,6 +1,6 @@
 <div *ngIf="!isLoading" class="container">
   <div *ngFor="let image of images">
-    <app-mimul-image [isInMyList]="isInMyList" [image]="image"></app-mimul-image>
+    <app-mimul-image [isInMyList]="isInMyList" [image]="image" (deleteImageEmitter)="removeImage($event)"></app-mimul-image>
   </div>
 </div>
 
