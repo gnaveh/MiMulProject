@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { AddImageComponent } from '../add-image/add-image.component';
-import { ImgurImage } from '../services/imgur.service';
+import { ImgurImage, ImgurService } from '../services/imgur.service';
 
 @Component({
   selector: 'app-mimul-header',
@@ -14,23 +13,43 @@ export class MimulHeaderComponent {
   @Output() newImageEmitter = new EventEmitter<ImgurImage>();
 
   isInMyList: boolean = true;
-  constructor(private dialog: MatDialog) { }
+  privateAlbumId: string = 'msfdyJt'
+
+  constructor(private dialog: MatDialog, private imgurService: ImgurService) { }
 
   changeIsInMyListValue(): void {
     this.isInMyList = !this.isInMyList;
     this.isInMyListEmitter.emit(this.isInMyList);
   }
 
-  addNewImage() {
-    const dialogRef = this.dialog.open(AddImageComponent, {
-      width: '400px',
-      height: '130px',
-      disableClose: false,
-    });
+  addImage(event: Event) {
+    const input = event.target as HTMLInputElement;
+    const selectedImage = input.files?.[0] || null;
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.newImageEmitter.emit(result);
+    if (!selectedImage) {
+      alert('לא נבחרה תמונה');
+      return;
+    }
+
+    const imageName = selectedImage.name.replace(/\.[^/.]+$/, "");  
+
+    console.log(imageName);
+
+    this.imgurService.addImageToAlbum(this.privateAlbumId, selectedImage, imageName).subscribe({
+      next: (response) => {
+        if (response.success) {
+          const imgurImage: ImgurImage = {
+            id: response.data.id as string,
+            deletehash: response.data.deletehash as string,
+            link: response.data.link as string,
+            title: response.data.title as string
+          };
+
+          this.newImageEmitter.emit(imgurImage);
+        }
+      },
+      error: (err) => {
+        console.log('Error fetching images:', err);
       }
     });
   }

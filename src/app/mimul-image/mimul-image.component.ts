@@ -21,8 +21,10 @@ export class MimulImageComponent {
   openImage() {
     this.dialog.open(ImageDialogComponent, {
       data: { imageUrl: this.image.link },
-      width: '90vw', 
-      height: '90vh',
+      minWidth: '10vh', 
+      minHeight: '20vh',
+      maxWidth: '75vw',  
+      maxHeight: '95vh', 
       disableClose: false
     });
   }

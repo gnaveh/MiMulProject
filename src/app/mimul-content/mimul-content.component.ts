@@ -12,7 +12,7 @@ export class MimulContentComponent implements OnChanges {
   @Input() newImage: ImgurImage = {};
 
   images: ImgurImage[] = [];
-
+  isLoading: boolean = true;
 
   privateAlbumId: string = "msfdyJt";
   publicAlbumId: string = "uGviM5l";
@@ -34,6 +34,8 @@ export class MimulContentComponent implements OnChanges {
 
   fetchImages(albumId: string) {
     this.images = [];
+
+    this.isLoading = true;
     this.imgurService.getImagesFromAlbum(albumId).subscribe({
       next: (response) => {
         if (response.success) {
@@ -50,9 +52,11 @@ export class MimulContentComponent implements OnChanges {
         else {
           console.error("oh no, an error");
         }
+        this.isLoading = false;
       },
       error: (err) => {
         console.log('Error fetching images:', err);
+        this.isLoading = false;
       }
     });
   }

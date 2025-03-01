@@ -1,5 +1,5 @@
 html, body {
-  background: #1A1A1A;
+  background: white;
   height: 100%;
   overflow: hidden;
 }
@@ -7,7 +7,7 @@ html, body {
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 mat-icon {
-  color: white;
+  color: black;
 }
 
 html, body { height: 100%; }

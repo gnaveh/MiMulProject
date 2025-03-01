@@ -1,5 +1,9 @@
-<div class="container">
+<div *ngIf="!isLoading" class="container">
   <div *ngFor="let image of images">
     <app-mimul-image [isInMyList]="isInMyList" [image]="image"></app-mimul-image>
   </div>
+</div>
+
+<div class="spinner-container" *ngIf="isLoading">
+  <mat-spinner [diameter]="80"></mat-spinner>
 </div>

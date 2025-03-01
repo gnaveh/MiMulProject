@@ -9,10 +9,12 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { HttpClientModule } from '@angular/common/http';
-import { AddImageComponent } from './add-image/add-image.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
 import { ImageDialogComponent } from './image-dialog/image-dialog.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -21,7 +23,6 @@ import { ImageDialogComponent } from './image-dialog/image-dialog.component';
     MimulContentComponent,
     MimulHeaderComponent,
     MimulImageComponent,
-    AddImageComponent,
     ImageDialogComponent,
   ],
   imports: [
@@ -31,7 +32,10 @@ import { ImageDialogComponent } from './image-dialog/image-dialog.component';
     MatTooltipModule,
     HttpClientModule,
     MatDialogModule,
-    FormsModule
+    FormsModule,
+    MatProgressSpinnerModule,
+    MatMenuModule,
+    MatButtonModule
   ],
   providers: [
     provideAnimationsAsync()
