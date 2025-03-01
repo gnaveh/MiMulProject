@@ -1,7 +1,7 @@
 <div *ngIf="!isImageDeleted" class="container">
   <div class="image-name">{{image.title}}</div>
 
-  <button mat-icon-button [matMenuTriggerFor]="menu" class="menu-button">
+  <button *ngIf="isInMyList" mat-icon-button [matMenuTriggerFor]="menu" class="menu-button">
     <mat-icon>more_vert</mat-icon>
   </button>
 
